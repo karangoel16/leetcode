@@ -52,12 +52,15 @@ public:
     string toHex(int num) {
         if(num==0)
             return "0";
-        string nums="0123456789abcdef",result="";
+        string nums="0123456789abcdef",result;
+        stringstream ss;
         int count=0;
         while(num && count++<8){
-            result=nums[(num&0xf)]+result;
+            ss<<nums[(num&0xf)];
             num>>=4;
         }
+        result=ss.str();
+        std::reverse(result.begin(),result.end());
         return result;
     }
 };
