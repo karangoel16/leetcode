@@ -29,8 +29,9 @@
  * Credits:Special thanks to @pbrother for adding this problem and creating all
  * test cases.
  */
-int helper(vector<int> &temp,int low,int high,int key)
-{
+class Solution {
+    int helper(vector<int> &temp,int low,int high,int key)
+    {
     while(low<=high){
         int mid=low+((high-low)>>1);
         if(temp[mid]==key)
@@ -41,8 +42,7 @@ int helper(vector<int> &temp,int low,int high,int key)
             high=mid-1;
     }
     return low;
-}
-class Solution {
+    }
 public:
     int lengthOfLIS(vector<int>& nums) {
         if(nums.size()==0)
