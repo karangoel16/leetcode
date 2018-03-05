@@ -29,25 +29,18 @@
  * Credits:Special thanks to @pbrother for adding this problem and creating all
  * test cases.
  */
-int helper(vector<int> temp,int low,int high,int key)
+int helper(vector<int> &temp,int low,int high,int key)
 {
-    if(low>high)
-    {
-        return low;
+    while(low<=high){
+        int mid=low+(high-low)/2;
+        if(temp[mid]==key)
+            return mid;
+        else if(temp[mid]<key)
+            low=mid+1;
+        else
+            high=mid-1;
     }
-    int mid=(low+high)/2;
-    if(temp[mid]==key)
-    {
-        return mid;
-    }
-    if(temp[mid]<key)
-    {
-        return helper(temp,mid+1,high,key);
-    }
-    else
-    {
-        return helper(temp,low,mid-1,key);
-    }
+    return low;
 }
 class Solution {
 public:
@@ -72,10 +65,6 @@ public:
                 temp[helper(temp,0,length-1,nums[i])]=nums[i];
             }
         }
-        //for(auto i:temp)
-        //{
-        //    std::cout<<i<<"\n";
-        //}
         return length;
     }
 };
