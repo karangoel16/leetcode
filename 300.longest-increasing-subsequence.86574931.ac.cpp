@@ -32,7 +32,7 @@
 int helper(vector<int> &temp,int low,int high,int key)
 {
     while(low<=high){
-        int mid=low+(high-low)/2;
+        int mid=low+((high-low)>>1);
         if(temp[mid]==key)
             return mid;
         else if(temp[mid]<key)
@@ -50,20 +50,14 @@ public:
         vector<int> temp(nums.size(),0);
         temp[0]=nums[0];
         int length=1;
-        for(int i=1;i<nums.size();i++)
+        for(int i=1;i<nums.size();++i)
         {
             if(nums[i]<temp[0])
-            {
                 temp[0]=nums[i];
-            }
             else if(nums[i]>temp[length-1])
-            {
                 temp[length++]=nums[i];//this is done to add new element in the array 
-            }
             else
-            {
                 temp[helper(temp,0,length-1,nums[i])]=nums[i];
-            }
         }
         return length;
     }
