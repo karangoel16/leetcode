@@ -50,17 +50,16 @@ public:
     ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
         stack<int> st;
         int n1=count(l1),n2=count(l2),tmp=std::max(n1,n2);
+        if(n1<n2){
+            std::swap(l1,l2);
+            std::swap(n1,n2);
+        }
         for(ListNode *temp1=l1,*temp2=l2;tmp;tmp--){
             int a=0,b=0;
             if(n1>n2){
                 a=temp1->val;
                 temp1=temp1->next;
                 n1--;
-            }
-            else if(n2>n1){
-                b=temp2->val;
-                temp2=temp2->next;
-                n2--;
             }
             else{
                 a=temp1->val;
@@ -71,7 +70,6 @@ public:
                 n2--;
             }
             st.push(a+b);
-            //std::cout<<a+b<<"\n";
         }
         ListNode *head=NULL;
         int c=0;
