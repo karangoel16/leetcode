@@ -35,7 +35,9 @@ public:
             }
         }
         e->next=NULL;
-        return d->next;
+        ListNode *temp=d->next;
+        delete d;
+        return temp;
     }
     ListNode* sortList(ListNode* head) {
          if(!head || !head->next) return head;
