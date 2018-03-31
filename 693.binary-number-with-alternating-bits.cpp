@@ -52,9 +52,10 @@ class Solution {
 public:
     bool hasAlternatingBits(int n) {
         while(n){
-            if((n&1)==((n>>1)&1))
+            int t=n>>1;
+            if((n&1)==((t)&1))
                 return false;
-            n=n/2;
+            n=t;
         }
         return true;
     }
