@@ -38,7 +38,7 @@ public:
                 if(points[j].x==points[i].x && points[j].y==points[i].y)
                 {
                     overlap++;
-                    //continue;
+                    continue;
                 }  
                 else if(points[j].x==points[i].x)
                     vertical++;
