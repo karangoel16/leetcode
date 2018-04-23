@@ -33,21 +33,18 @@ public:
         int res=0;
         for(int i=0;i<points.size()-res;i++){
             int overlap=0,vertical=0,localmax=0;
-            unordered_map<string,int> lines;
+            map<pair<int,int>,int> lines;
             for(int j=i+1;j<points.size();j++){
                 if(points[j].x==points[i].x && points[j].y==points[i].y)
-                {
                     overlap++;
-                    continue;
-                }  
                 else if(points[j].x==points[i].x)
                     vertical++;
                 else   {
-                    int a=points[j].x-points[i].x,b=(points[j].y-points[i].y);
+                    int a=(points[j].x-points[i].x),b=(points[j].y-points[i].y);
                     int gcd=GCD(a,b);
                     a/=gcd;
                     b/=gcd;
-                    localmax=std::max(++lines[to_string(a)+","+to_string(b)],localmax);
+                    localmax=std::max(++lines[{a,b}],localmax);
                 }
                 localmax=std::max(localmax,vertical);    
             }
