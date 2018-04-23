@@ -33,7 +33,7 @@ public:
         int res=0;
         for(int i=0;i<points.size();i++){
             int overlap=0,vertical=0,localmax=0;
-            map<pair<int,int>,int> lines;
+            unordered_map<string,int> lines;
             for(int j=i+1;j<points.size();j++){
                 if(points[j].x==points[i].x && points[j].y==points[i].y)
                 {
@@ -47,7 +47,7 @@ public:
                     int gcd=GCD(a,b);
                     a/=gcd;
                     b/=gcd;
-                    localmax=std::max(++lines[{a,b}],localmax);
+                    localmax=std::max(++lines[to_string(a)+","+to_string(b)],localmax);
                 }
                 localmax=std::max(localmax,vertical);    
             }
