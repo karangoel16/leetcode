@@ -31,7 +31,7 @@ public:
         if(points.size()<2)
             return points.size();
         int res=0;
-        for(int i=0;i<points.size();i++){
+        for(int i=0;i<points.size()-res;i++){
             int overlap=0,vertical=0,localmax=0;
             unordered_map<string,int> lines;
             for(int j=i+1;j<points.size();j++){
