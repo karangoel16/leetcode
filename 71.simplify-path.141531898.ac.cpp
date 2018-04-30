@@ -1,12 +1,9 @@
-vector<string> split(string s)
+vector<string> split(string & s)
 {
-    for(int i=0;i<s.length();i++)
-        if(s[i]=='/')
-            s[i]=' ';
     stringstream ss(s);
     vector<string> res;
     for(string s;ss>>s;)
-        res.push_back(s);
+        res.emplace_back(std::move(s));
     return res;
 }
 class Solution {
