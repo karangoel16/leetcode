@@ -38,7 +38,7 @@ public:
     vector<vector<string>> groupAnagrams(vector<string>& strs) {
         unordered_map<int,vector<string>> mp;
         for(int i=0;i<strs.size();i++)
-            mp[find(strs[i])].push_back(std::move(strs[i]));
+            mp[find(strs[i])].emplace_back(std::move(strs[i]));
         vector<vector<string>> res;
         res.reserve(strs.size());
         for(auto i:mp){
